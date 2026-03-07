@@ -5,6 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed =1f;
+    [SerializeField]
+    private GameObject BulletPrefab; //프리팹 변수 선언
+
+    [SerializeField]
+    private float bulletSpeed;
 
 
     //public Vector2 pos;
@@ -50,6 +55,30 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(moveSpeed * Time.deltaTime,0f, 0f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //GameObject Bullet = 
+               // Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+            for(int i = 0; i<3; i++)
+            {
+                GameObject Bullet = Instantiate(BulletPrefab);
+
+                Vector3 bulletPos = transform.position;
+
+                bulletPos.y = bulletPos.y + 
+                     1f*(i);
+
+                Bullet.transform.position = bulletPos;
+
+
+
+                Bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bulletSpeed);
+            }
+           
+          
+            // Bullet.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 }

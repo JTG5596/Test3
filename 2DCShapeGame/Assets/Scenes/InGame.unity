@@ -245,6 +245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  BulletPrefab: {fileID: 4332434324969777002, guid: 7e2c3ab9bd96a4548b776b535f5aeed4, type: 3}
+  bulletSpeed: 1000
 --- !u!212 &1053252606
 SpriteRenderer:
   m_ObjectHideFlags: 0

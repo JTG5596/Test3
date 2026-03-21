@@ -25,6 +25,15 @@ public class Enemy : MonoBehaviour
         Debug.Log(health);
     }
 
+    void TakeDamageByRatio(float ratio) //0.1
+    {
+        health -= (int)(health * ratio); // 50 * 0.1 -> 5 > 50-55 = 45; 
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
     public float GetHealth()
     {
         return health;
@@ -46,4 +55,12 @@ public class Enemy : MonoBehaviour
             collision.gameObject.SetActive(false);
         }
     }
+
+    public virtual void Move() //virtual > 오버라이드 가능
+    {
+
+    }
+
+
+
 }

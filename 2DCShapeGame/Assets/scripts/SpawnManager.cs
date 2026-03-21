@@ -17,7 +17,9 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnEnemy(GameObject prefabs, Vector3 _position)
     {
-        GameObject enemy =Instantiate(prefabs);
+        GameObject enemy = Instantiate(prefabs);
         enemy.transform.position = _position;
+
+        enemy.GetComponent<Enemy>().Move();
     }
 }

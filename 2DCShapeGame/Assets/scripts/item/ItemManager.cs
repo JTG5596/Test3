@@ -1,4 +1,4 @@
-using System;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,15 +23,25 @@ public class ItemManager : MonoBehaviour
         {
             GameObject prefab = Itemprefabs[UnityEngine.Random.Range(0, Itemprefabs.Length)];
             Vector2 pos = Points[UnityEngine.Random.Range(0, Points.Length)].GetPos();
-            SpawnItem(prefab, pos);
+            //SpawnItem(prefab, pos);
         }
     }
 
-    private void SpawnItem(GameObject iemprefabs, Vector2 pos )
+    public void SpawnItem(GameObject itemprefabs, Vector2 pos )
     {
-        GameObject obj = Instantiate(iemprefabs);
+        GameObject obj = Instantiate(itemprefabs);
         obj.transform.position = pos;
     }
+
+    public void SpawnRandom()
+    {
+        GameObject prefab = Itemprefabs[Random.Range(0, Itemprefabs.Length)];
+
+        Vector2 pos = Points[Random.Range(0, Points.Length)].GetPos();
+        SpawnItem(prefab , pos);
+        Invoke("SpawnRandom", 1f);
+    }
+
 }
 
 public struct Point
